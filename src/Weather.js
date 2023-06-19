@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Weather.css";
+
 export default function Weather() {
   return (
     <div className="Weather">
@@ -17,6 +19,33 @@ export default function Weather() {
           </div>
         </div>
       </form>
+      <main>
+        <div className="row">
+          <div className="col-6">
+            <div className="row">
+              <div className="col-6">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                  alt="weather"
+                />
+                <strong> 18 C</strong>
+              </div>
+              <div className="col-6 text-left">
+                <ul>
+                  <li>Precipitation</li>
+                  <li>Humidity</li>
+                  <li>Wind</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="col-6 text-right">
+            <h1>Amsterdam</h1>
+            <p>Monday, 23.00</p>
+            <p>cloudy</p>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
