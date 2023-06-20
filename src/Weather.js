@@ -41,8 +41,10 @@ export default function Weather() {
           </div>
           <div className="col-6 text-right">
             <h1>Amsterdam</h1>
-            <p>Monday, 23.00</p>
-            <p>cloudy</p>
+            <ul>
+              <li>Monday, 23.00 </li>
+              <li>cloudy</li>
+            </ul>
           </div>
         </div>
       </main>
