@@ -5,8 +5,9 @@ import WeatherInfo from "./WeatherInfo";
 
 import "./Weather.css";
 
-export default function Weather() {
+export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ raedy: false });
+  const [city, setCity] = useState(props.city);
   function handleRespose(response) {
     setWeatherData({
       ready: true,
@@ -16,14 +17,31 @@ export default function Weather() {
       wind: response.data.wind.speed,
       description: response.data.condition.description,
       pressure: response.data.temperature.pressure,
-      iconUrl: response.data.condition.icon_url,
+      iconUrl: " https://ssl.gstatic.com/onebox/weather/64/cloudy.png",
       date: new Date(response.data.time * 1000),
     });
   }
+
+  function search() {
+    const apiKey = "3ba49e901d0tof3a381ffd812a82fa2e";
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios.get(apiUrl).then(handleRespose);
+  }
+
+  function handleSubmit(event) {
+    event.prevenDefault();
+    search();
+  }
+
+  function handleCity(event) {
+    setCity(event.target.value);
+    console.log(event.target.value);
+  }
+
   if (weatherData.ready) {
     return (
       <div className="Weather">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-9">
               <input
@@ -31,6 +49,7 @@ export default function Weather() {
                 placeholder="Enter a city..."
                 className="form-control"
                 autoFocus="on"
+                onChange={handleCity}
               />
             </div>
             <div className="col-3">
@@ -46,10 +65,7 @@ export default function Weather() {
       </div>
     );
   } else {
-    const apiKey = "3ba49e901d0tof3a381ffd812a82fa2e";
-    let city = "Amsterdam";
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-    axios.get(apiUrl).then(handleRespose);
+    search();
     return "Loading... ";
   }
 }
