@@ -9,6 +9,7 @@ export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ raedy: false });
   const [city, setCity] = useState(props.city);
   function handleRespose(response) {
+    console.log(response.data);
     setWeatherData({
       ready: true,
       temperature: response.data.temperature.current,
@@ -17,7 +18,7 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       description: response.data.condition.description,
       pressure: response.data.temperature.pressure,
-      iconUrl: " https://ssl.gstatic.com/onebox/weather/64/cloudy.png",
+      iconUrl: response.data.condition.icon_url,
       date: new Date(response.data.time * 1000),
     });
   }
