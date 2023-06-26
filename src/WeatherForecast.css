@@ -8,3 +8,6 @@
 .WeatherForecast-max {
   margin-right: 5px;
 }
+.WeatherForecast img {
+  max-width: 42px;
+}
