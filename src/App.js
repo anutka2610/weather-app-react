@@ -10,7 +10,7 @@ function App() {
         <footer>
           <p>
             <a
-              href="https://github.com/anutka2610/react-weather-app"
+              href="https://github.com/anutka2610/weather-app-react"
               target="_blank"
               rel="noreferrer"
             >
