@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./WeatherForecast.css";
+
 export default function WeatherForecastDay(props) {
   function day() {
     const date = new Date(props.data.time * 1000);
@@ -9,7 +11,7 @@ export default function WeatherForecastDay(props) {
     return days[day];
   }
   return (
-    <div>
+    <div className="WeatherForecast">
       <div>{day()}</div>
       <img
         src={props.data.condition.icon_url}
